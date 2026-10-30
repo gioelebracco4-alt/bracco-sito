@@ -1,0 +1,24 @@
+/* Bracco Brand — componenti (richiede tokens.css e typography.css) */
+.bb-btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-4);min-height:var(--tap-min);padding:var(--space-12) 22px;border:0;border-radius:var(--radius-pill);font-family:var(--font-text);font-size:17px;line-height:20px;font-weight:400;cursor:pointer;text-decoration:none;transition:filter .15s ease}
+.bb-btn:hover{filter:brightness(.95)}
+.bb-btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.bb-btn:disabled{cursor:default;filter:none;background:var(--fill);color:var(--label-tertiary)}
+.bb-btn--primary{background:var(--green);color:var(--on-green)}
+.bb-btn--secondary{background:var(--fill);color:var(--label)}
+.bb-btn--dark{background:var(--black);color:var(--white)}
+.bb-btn--link{background:none;color:var(--link);padding-left:var(--space-4);padding-right:var(--space-4)}
+.bb-btn--link:hover{filter:none;text-decoration:underline}
+.bb-btn--sm{min-height:32px;padding:6px 14px;font-size:14px;line-height:18px}
+.bb-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-12);padding:var(--space-16)}
+.bb-card{display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-8);padding:var(--space-48) var(--space-32) var(--space-32);background:var(--bg-secondary);color:var(--label);border-radius:var(--radius-lg);font-family:var(--font-text);transition:box-shadow .2s ease}
+.bb-card:hover{box-shadow:var(--shadow-card)}
+.bb-card--dark{background:var(--black);color:var(--white)}
+.bb-card--dark .bb-card__text,.bb-card--dark .bb-card__price{color:#a1a1a6}
+.bb-card__eyebrow{font-family:var(--font-text);font-size:13px;line-height:16px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--green-text)}
+.bb-card--dark .bb-card__eyebrow{color:var(--green)}
+.bb-card__title{margin:0;font-family:var(--font-display);font-size:40px;line-height:46px;font-weight:400}
+.bb-card__text{margin:0;font-family:var(--font-serif);font-size:21px;line-height:30px;color:var(--label-secondary);max-width:32ch}
+.bb-card__price{font-size:15px;line-height:20px;color:var(--label-secondary)}
+.bb-card__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-12);margin-top:var(--space-8)}
+.bb-card__media{margin-top:var(--space-24);width:100%;display:block}
+.bb-card--dark .bb-btn--link{color:var(--green)}

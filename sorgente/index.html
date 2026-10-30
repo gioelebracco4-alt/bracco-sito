@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BraccoBrand — Calore &amp; Design | Petralia Soprana</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Stufe a pellet e a legna, piastrelle, arredo bagno e parquet. Scopri i prodotti BraccoBrand a Petralia Soprana e scrivici su WhatsApp.">
+<link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/typography.css">
+<link rel="stylesheet" href="assets/css/bracco.css">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<!-- Intestazione: trasparente sopra l'apertura, piena dopo lo scorrimento -->
+<header class="header" id="header">
+  <div class="header__bar">
+    <div class="header__left">
+      <button class="menu-btn" id="menu-open" type="button" aria-expanded="false" aria-controls="drawer">
+        <span class="menu-btn__lines" aria-hidden="true"><i></i><i></i></span>
+        <span class="menu-btn__label">Menu</span>
+        <span class="sr-only">Apri il menu</span>
+      </button>
+      <button class="icon-btn" id="search-open" type="button" aria-label="Cerca" aria-expanded="false" aria-controls="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/></svg>
+      </button>
+    </div>
+    <a class="header__brand" href="#top" aria-label="BraccoBrand, torna all'inizio">
+      <img src="assets/logo/bracco-mark.svg" width="32" height="32" alt="">
+    </a>
+    <div class="header__right">
+      <a class="header__link header__link--wide" href="#stufe">Stufe</a>
+      <a class="header__link header__link--wide" href="#contatti">Contatti</a>
+      <a class="pill pill--green pill--sm" href="https://wa.me/393779620456" target="_blank" rel="noopener">Parliamone</a>
+    </div>
+  </div>
+</header>
+
+<!-- Menu laterale -->
+<div class="drawer-scrim" id="drawer-scrim" hidden></div>
+<nav class="drawer" id="drawer" aria-label="Menu principale" hidden>
+  <div class="drawer__top">
+    <img src="assets/logo/bracco-mark.svg" width="32" height="32" alt="BraccoBrand">
+    <button class="icon-btn" id="menu-close" type="button" aria-label="Chiudi il menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="drawer__nav">
+    <a href="#evidenza">In evidenza</a>
+    <a href="#stufe">Stufe <span id="drawer-count"></span></a>
+    <a href="#casa">Per la tua casa <span>8 categorie</span></a>
+    <a href="#contatti">Contatti</a>
+  </div>
+  <div class="drawer__foot">
+    <p>Sede unica a Petralia Soprana.</p>
+    <p>Telefono <a href="tel:+390921641957">0921 641957</a> · WhatsApp <a href="https://wa.me/393779620456" target="_blank" rel="noopener">377 9620456</a></p>
+  </div>
+</nav>
+
+<!-- Ricerca -->
+<div class="search" id="search" role="dialog" aria-modal="true" aria-label="Cerca nel sito" hidden>
+  <div class="search__row">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20"/></svg>
+    <label class="sr-only" for="search-input">Cerca un prodotto o una categoria</label>
+    <input id="search-input" type="search" placeholder="Cerca una stufa, il parquet, i sanitari…" autocomplete="off">
+    <button class="icon-btn" id="search-close" type="button" aria-label="Chiudi la ricerca">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <ul class="search__results" id="search-results"></ul>
+  <p class="search__empty" id="search-empty" hidden>Nessun risultato. Prova con «pellet», «legna» o «bagno».</p>
+</div>
+
+<main id="top">
+
+  <!-- Apertura a tutto schermo con video -->
+  <section class="hero" aria-labelledby="hero-title">
+    <video class="hero__media" id="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/img/stufa-poster.jpg" aria-label="Video di una stufa La Nordica-Extraflame accesa">
+      <source src="assets/video/stufa-home.mp4" type="video/mp4">
+    </video>
+    <div class="hero__shade" aria-hidden="true"></div>
+    <div class="hero__copy">
+      <p class="eyebrow">BraccoBrand · Calore &amp; Design</p>
+      <h1 class="hero__title" id="hero-title">Il fuoco, <em>protagonista</em>.</h1>
+      <p class="hero__lead">La bellezza di una fiamma. Il piacere di sentirsi a casa.</p>
+      <div class="hero__ctas">
+        <a class="pill pill--green" href="#stufe">Scopri le stufe</a>
+        <a class="pill pill--outline" href="https://wa.me/393779620456" target="_blank" rel="noopener">Scrivici su WhatsApp</a>
+      </div>
+    </div>
+    <button class="round-btn hero__pause" id="pause" type="button" aria-pressed="false" aria-label="Metti in pausa il video">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-pause" d="M9 7v10M15 7v10"/><path class="i-play" d="M9 7l8 5-8 5z" hidden/></svg>
+    </button>
+    <span class="credit hero__credit">Immagini di prodotto La Nordica-Extraflame</span>
+  </section>
+
+  <!-- In evidenza: Borea Hybrid -->
+  <section class="section" id="evidenza" aria-labelledby="evidenza-title">
+    <div class="wide">
+      <div class="head">
+        <p class="eyebrow">La nostra selezione</p>
+        <h2 class="title">In evidenza questa settimana</h2>
+        <p class="lead">Uno spazio dedicato ai prodotti da conoscere più da vicino. Per disponibilità e preventivi, scrivici.</p>
+      </div>
+      <article class="feature" aria-labelledby="evidenza-title">
+        <figure class="feature__media">
+          <img src="assets/img/borea-hybrid.jpg" width="1039" height="781" alt="Borea Hybrid, stufa combinata a legna e pellet, in un soggiorno" loading="lazy">
+        </figure>
+        <div class="feature__copy">
+          <p class="eyebrow">Dielle · Stufa combinata</p>
+          <h3 class="feature__title" id="evidenza-title">Borea Hybrid 10 kW</h3>
+          <p class="feature__tagline">Due combustibili. Un unico calore.</p>
+          <p class="feature__price"><span>Prezzo stufa</span>3.990 €</p>
+          <p class="feature__text">Il piacere della legna e la praticità del pellet. Una stufa combinata per scegliere come vivere il calore di casa, con convezione naturale o ventilazione forzata escludibile.</p>
+          <ul class="checks">
+            <li>Funzionamento a legna e pellet</li>
+            <li>Potenza di 10 kW</li>
+            <li>Combustione sorgiva: pellet alimentato dal basso</li>
+            <li>Espulsione automatica della cenere dal braciere</li>
+            <li>Ventilazione forzata escludibile</li>
+          </ul>
+          <div class="feature__ctas">
+            <a class="pill pill--green" href="https://wa.me/393779620456?text=Buongiorno%2C%20vorrei%20informazioni%20sulla%20Borea%20Hybrid%2010%20kW." target="_blank" rel="noopener">Chiedi su WhatsApp</a>
+            <a class="pill pill--line" href="#sorgiva">Come funziona</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Fascia scura: combustione sorgiva -->
+  <section class="tech" id="sorgiva" aria-labelledby="sorgiva-title">
+    <div class="wide tech__inner">
+      <figure class="tech__media">
+        <img src="assets/img/combustione-sorgiva.jpg" width="888" height="1600" alt="Sezione della Borea Hybrid: le coclee portano il pellet dal basso verso il braciere" loading="lazy">
+      </figure>
+      <div class="tech__copy">
+        <p class="eyebrow">Tecnologia brevettata Dielle · Borea Hybrid</p>
+        <h2 class="band__title" id="sorgiva-title">Il pellet sale. La cenere esce.</h2>
+        <p class="tech__lead">Meno pulizia manuale del braciere, più tempo per goderti il calore. Il pellet arriva al bruciatore dal basso e spinge fuori, in modo naturale e automatico, la cenere residua.</p>
+        <ol class="tech__steps">
+          <li><b>1</b><div><strong>Fiamma naturale</strong><span>Alimentazione dal basso per una fiamma stabile, simile a quella della legna.</span></div></li>
+          <li><b>2</b><div><strong>Pellet preriscaldato</strong><span>Durante il percorso il combustibile viene preriscaldato e asciugato.</span></div></li>
+          <li><b>3</b><div><strong>Comfort silenzioso</strong><span>Sistema di alimentazione progettato per contenere la rumorosità.</span></div></li>
+        </ol>
+        <p class="tech__note">La pulizia ridotta del braciere non elimina la raccolta delle ceneri e la manutenzione della stufa: segui sempre il manuale del modello.</p>
+        <div class="band__ctas">
+          <a class="pill pill--white" href="https://wa.me/393779620456?text=Vorrei%20informazioni%20sulla%20combustione%20sorgiva%20Dielle%20Borea%20Hybrid" target="_blank" rel="noopener">Parliamo della Borea Hybrid</a>
+          <a class="pill pill--outline" href="https://www.diellespa.it/stufe-a-legna-pellet/borea-hybrid/" target="_blank" rel="noopener">Sito ufficiale Dielle</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stufe: griglia con filtri -->
+  <section class="section" id="stufe" aria-labelledby="stufe-title">
+    <div class="wide">
+      <div class="head">
+        <p class="eyebrow">Legna, pellet, design</p>
+        <h2 class="title" id="stufe-title">Le nostre stufe</h2>
+        <p class="lead">Foto, prezzi, schede tecniche e incentivi a colpo d'occhio. Tocca una stufa per vedere tutti i dettagli.</p>
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="Filtra per combustibile"></div>
+      <div class="tiles" id="tiles" aria-live="polite"></div>
+      <p class="credit credit--center">Immagini di prodotto La Nordica-Extraflame e Dielle. Prezzi IVA inclusa, salvo diversa indicazione.</p>
+    </div>
+  </section>
+
+  <!-- Fascia con fotografia: Larissa -->
+  <section class="photo-band" aria-labelledby="larissa-title">
+    <img class="photo-band__img" src="assets/img/larissa.jpg" width="560" height="800" alt="Stufa a legna Larissa accesa in un ambiente serale" loading="lazy">
+    <div class="photo-band__shade" aria-hidden="true"></div>
+    <div class="photo-band__copy">
+      <p class="eyebrow">La Nordica-Extraflame · Larissa</p>
+      <h2 class="band__title" id="larissa-title">Il fascino della legna</h2>
+      <p class="band__lead">Una presenza che dà carattere ai tuoi spazi.</p>
+      <div class="band__ctas">
+        <button class="pill pill--white" type="button" data-open="larissa">Scopri Larissa</button>
+        <a class="pill pill--outline" href="#stufe" data-filter="legna">Stufe a legna</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Per la tua casa: carosello categorie -->
+  <section class="section" id="casa" aria-labelledby="casa-title">
+    <div class="wide">
+      <div class="head">
+        <p class="eyebrow">Materiali, comfort, personalità</p>
+        <h2 class="title" id="casa-title">Ogni spazio, una scelta che ti somiglia</h2>
+        <p class="lead">Oltre alle stufe, in showroom trovi tutto per la casa. Raccontaci il tuo progetto e ti aiutiamo a scegliere.</p>
+      </div>
+      <div class="carousel">
+        <div class="carousel__track" id="track" tabindex="0" aria-label="Categorie di prodotti"></div>
+        <div class="carousel__nav">
+          <button class="round-btn" id="prev" type="button" aria-label="Precedente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+          <button class="round-btn" id="next" type="button" aria-label="Successivo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contatti -->
+  <section class="section section--tight-top" id="contatti" aria-labelledby="contatti-title">
+    <div class="wide">
+      <div class="head">
+        <p class="eyebrow">Diamo forma alle tue idee</p>
+        <h2 class="title" id="contatti-title">Il prossimo passo? Parliamone</h2>
+        <p class="lead">Raccontaci cosa cerchi. Ti aiutiamo a conoscere i prodotti e a scegliere i materiali per la tua casa.</p>
+      </div>
+      <div class="contact">
+        <div class="contact__info">
+          <div class="contact__item">
+            <h3>Showroom</h3>
+            <p>Sede unica a Petralia Soprana.</p>
+            <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Ceramiche+Bracco+Petralia+Soprana" target="_blank" rel="noopener">Apri sulla mappa</a>
+          </div>
+          <div class="contact__item">
+            <h3>Telefono</h3>
+            <p class="contact__value">0921 641957</p>
+            <button class="link" type="button" data-copy="0921 641957">Copia il numero</button>
+          </div>
+          <div class="contact__item">
+            <h3>WhatsApp</h3>
+            <p class="contact__value">377 9620456</p>
+            <a class="link" href="https://wa.me/393779620456" target="_blank" rel="noopener">Apri la chat</a>
+          </div>
+          <div class="contact__item">
+            <h3>Email</h3>
+            <p class="contact__value">ceramichebracco@gmail.com</p>
+            <button class="link" type="button" data-copy="ceramichebracco@gmail.com">Copia l'indirizzo</button>
+          </div>
+        </div>
+        <form class="composer" id="composer" novalidate>
+          <h3 class="composer__title">Scrivici su WhatsApp</h3>
+          <p class="composer__hint">Componi il messaggio qui: si apre WhatsApp con il testo già pronto.</p>
+          <div class="field">
+            <label for="c-name">Nome</label>
+            <input id="c-name" type="text" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="c-interest">Ti interessa</label>
+            <select id="c-interest"></select>
+          </div>
+          <div class="field">
+            <label for="c-message">Messaggio</label>
+            <textarea id="c-message" placeholder="Per esempio: misure dell'ambiente, colore preferito, tempi."></textarea>
+          </div>
+          <a class="pill pill--green composer__send" id="c-send" href="https://wa.me/393779620456" target="_blank" rel="noopener">Apri WhatsApp con il messaggio</a>
+          <p class="composer__note">Il messaggio parte solo quando lo invii tu da WhatsApp.</p>
+        </form>
+      </div>
+      <p class="copied" id="copied" role="status" hidden></p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wide">
+    <div class="services">
+      <a class="service" href="https://wa.me/393779620456" target="_blank" rel="noopener">
+        <div><strong>WhatsApp</strong><span>Disponibilità, preventivi e consulenze: 377 9620456.</span></div>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+      <a class="service" href="https://www.google.com/maps/search/?api=1&amp;query=Ceramiche+Bracco+Petralia+Soprana" target="_blank" rel="noopener">
+        <div><strong>Showroom</strong><span>Sede unica a Petralia Soprana. Vieni a vedere le stufe accese.</span></div>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+      <a class="service" href="#stufe">
+        <div><strong>Conto Termico 3.0</strong><span>Gli incentivi zona per zona sono nella scheda di ogni stufa.</span></div>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="footer__cols">
+      <div class="footer__brand">
+        <img class="footer__logo footer__logo--light" src="assets/logo/bracco-logo.svg" width="461" height="342" alt="BraccoBrand, Calore &amp; Design">
+        <img class="footer__logo footer__logo--dark" src="assets/logo/bracco-logo-on-dark.svg" width="461" height="342" alt="BraccoBrand, Calore &amp; Design">
+      </div>
+      <nav aria-label="Stufe">
+        <h4>Stufe</h4>
+        <ul id="footer-products"></ul>
+      </nav>
+      <nav aria-label="Per la tua casa">
+        <h4>Per la tua casa</h4>
+        <ul id="footer-categories"></ul>
+      </nav>
+      <div>
+        <h4>Contatti</h4>
+        <ul class="footer__contacts">
+          <li>Petralia Soprana</li>
+          <li>Tel. 0921 641957</li>
+          <li>WhatsApp 377 9620456</li>
+          <li>ceramichebracco@gmail.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> Ceramiche Bracco srl · BraccoBrand Calore &amp; Design</span>
+      <a href="#top">Torna su ↑</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Scheda prodotto -->
+<dialog class="sheet" id="sheet" aria-labelledby="sheet-title">
+  <div class="sheet__inner" id="sheet-body"></div>
+  <button class="icon-btn sheet__close" id="sheet-close" type="button" aria-label="Chiudi la scheda">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+</dialog>
+
+<script src="assets/js/products.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

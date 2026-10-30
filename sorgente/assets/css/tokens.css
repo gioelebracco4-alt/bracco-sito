@@ -1,0 +1,101 @@
+/* Bracco Brand — design tokens (generated from tokens.json) */
+:root, [data-theme="light"] {
+  --bg: #ffffff;
+  --bg-secondary: #f5f5f7;
+  --bg-tertiary: #ffffff;
+  --label: #1d1d1f;
+  --label-secondary: #6e6e73;
+  --label-tertiary: #86868b;
+  --separator: #d2d2d7;
+  --control-border: #86868b;
+  --fill: #e8e8ed;
+  --green: #83be40;
+  --green-text: #467a17;
+  --green-soft: #eef6e4;
+  --on-green: #1d1d1f;
+  --black: #1d1d1f;
+  --white: #ffffff;
+  --charcoal: #343434;
+  --gray-logo: #8a8a8a;
+  --red: #d70015;
+  --orange: #c93400;
+  --focus: var(--green-text);
+  --link: var(--green-text);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-pop: 0 12px 40px rgba(0, 0, 0, 0.16);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #000000;
+    --bg-secondary: #1c1c1e;
+    --bg-tertiary: #2c2c2e;
+    --label: #f5f5f7;
+    --label-secondary: #a1a1a6;
+    --label-tertiary: #6e6e73;
+    --separator: #38383a;
+    --control-border: #8e8e93;
+    --fill: #3a3a3c;
+    --green: #83be40;
+    --green-text: #9ccf5f;
+    --green-soft: #1f2a14;
+    --on-green: #000000;
+    --black: #1d1d1f;
+    --white: #ffffff;
+    --charcoal: #343434;
+    --gray-logo: #8a8a8a;
+    --red: #ff453a;
+    --orange: #ff9f0a;
+    --focus: var(--green-text);
+    --link: var(--green-text);
+    --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-pop: 0 12px 40px rgba(0, 0, 0, 0.6);
+  }
+}
+[data-theme="dark"] {
+  --bg: #000000;
+  --bg-secondary: #1c1c1e;
+  --bg-tertiary: #2c2c2e;
+  --label: #f5f5f7;
+  --label-secondary: #a1a1a6;
+  --label-tertiary: #6e6e73;
+  --separator: #38383a;
+  --control-border: #8e8e93;
+  --fill: #3a3a3c;
+  --green: #83be40;
+  --green-text: #9ccf5f;
+  --green-soft: #1f2a14;
+  --on-green: #000000;
+  --black: #1d1d1f;
+  --white: #ffffff;
+  --charcoal: #343434;
+  --gray-logo: #8a8a8a;
+  --red: #ff453a;
+  --orange: #ff9f0a;
+  --focus: var(--green-text);
+  --link: var(--green-text);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-pop: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+:root {
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-80: 80px;
+  --space-120: 120px;
+  --radius-none: 0px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+  --radius-pill: 980px;
+  --tap-min: 44px;
+  --content-max: 980px;
+  --page-max: 1440px;
+  --font-display: "Bracco Display", "Bodoni 72", Didot, serif;
+  --font-serif: "Bracco Serif", Didot, Georgia, serif;
+  --font-text: "Bracco Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+}

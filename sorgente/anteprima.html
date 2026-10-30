@@ -1,0 +1,173 @@
+<title>Bracco Anteprima</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/*{{TOKENS}}*/
+/* Anteprima: barra in alto con il selettore Desktop / Mobile, sotto il sito in un riquadro
+   alla larghezza reale del dispositivo, scalato per stare nello schermo. */
+:root { --frame-edge: #d2d2d7; --bezel: #1d1d1f; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { color-scheme: dark; --frame-edge: #38383a; --bezel: #3a3a3c; } }
+:root[data-theme="dark"] { color-scheme: dark; --frame-edge: #38383a; --bezel: #3a3a3c; }
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-secondary);
+  color: var(--label);
+  font-family: var(--font-text);
+  -webkit-font-smoothing: antialiased;
+}
+.bar {
+  flex: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+  padding-block: var(--space-12);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  background: var(--bg);
+  border-bottom: 1px solid var(--separator);
+}
+.bar__brand { display: flex; align-items: center; gap: var(--space-12); min-width: 0; }
+.bar__brand img { width: 28px; height: 28px; flex: none; }
+.bar__brand b { font-weight: 600; font-size: 15px; line-height: 20px; }
+.bar__brand span { display: block; color: var(--label-secondary); font-size: 13px; line-height: 18px; }
+.seg {
+  display: inline-flex;
+  padding: 2px;
+  background: var(--fill);
+  border-radius: var(--radius-pill);
+}
+.seg button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  min-height: 40px;
+  padding: 0 var(--space-16);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: none;
+  color: var(--label);
+  font: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+.seg button svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.seg button[aria-selected="true"] { background: var(--bg); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12); font-weight: 500; }
+.seg button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.bar__size { color: var(--label-secondary); font-size: 13px; line-height: 18px; font-variant-numeric: tabular-nums; min-width: 9ch; text-align: right; }
+
+.stage {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-24) max(16px, env(safe-area-inset-right, 0px)) var(--space-24) max(16px, env(safe-area-inset-left, 0px));
+}
+.viewport {
+  position: absolute;
+  top: var(--space-24);
+  left: 50%;
+  transform-origin: top center;
+  background: var(--bg);
+  overflow: hidden;
+}
+.viewport iframe { display: block; width: 100%; height: 100%; border: 0; background: var(--bg); }
+.viewport--desktop { border: 1px solid var(--frame-edge); border-radius: var(--radius-md); }
+.viewport--mobile { border: 10px solid var(--bezel); border-radius: 46px; }
+@media (max-width: 734px) {
+  .bar__size { display: none; }
+  .bar__brand span { display: none; }
+}
+</style>
+
+<header class="bar">
+  <div class="bar__brand">
+    <img src="{{MARK}}" alt="">
+    <div><b>Sito Bracco</b><span>Anteprima per dispositivo</span></div>
+  </div>
+  <div class="seg" role="tablist" aria-label="Dispositivo">
+    <button type="button" role="tab" id="tab-desktop" data-device="desktop" aria-selected="true" aria-controls="stage">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg>Desktop
+    </button>
+    <button type="button" role="tab" id="tab-mobile" data-device="mobile" aria-selected="false" aria-controls="stage">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>Mobile
+    </button>
+  </div>
+  <span class="bar__size" id="size" aria-live="polite">1440 × 900</span>
+</header>
+
+<main class="stage" id="stage" role="tabpanel" aria-labelledby="tab-desktop">
+  <div class="viewport viewport--desktop" id="viewport">
+    <iframe id="site" src="sito.html" title="Sito Bracco"></iframe>
+  </div>
+</main>
+
+<script>
+(function () {
+  var devices = {
+    desktop: { w: 1440, h: 900, label: '1440 × 900' },
+    mobile: { w: 390, h: 844, label: '390 × 844 · iPhone' }
+  };
+  var stage = document.getElementById('stage');
+  var vp = document.getElementById('viewport');
+  var size = document.getElementById('size');
+  var current = 'desktop';
+
+  function layout() {
+    var d = devices[current];
+    var pad = 24;
+    var availW = stage.clientWidth - 32;
+    var availH = stage.clientHeight - pad * 2;
+    var bezel = current === 'mobile' ? 20 : 2;
+    var scale, w, h;
+    if (current === 'desktop') {
+      scale = Math.min(1, availW / (d.w + bezel));
+      w = d.w;
+      h = Math.max(400, availH / scale - bezel); // il desktop riempie tutta l'altezza disponibile
+    } else {
+      scale = Math.min(1, availW / (d.w + bezel), availH / (d.h + bezel));
+      w = d.w;
+      h = d.h;
+    }
+    vp.style.width = (w + bezel) + 'px';
+    vp.style.height = (h + bezel) + 'px';
+    vp.style.transform = 'translateX(-50%) scale(' + scale + ')';
+    size.textContent = d.label + (scale < 1 ? ' · ' + Math.round(scale * 100) + '%' : '');
+  }
+
+  function select(device) {
+    if (!devices[device]) return;
+    current = device;
+    vp.className = 'viewport viewport--' + device;
+    document.querySelectorAll('.seg button').forEach(function (b) {
+      var on = b.getAttribute('data-device') === device;
+      b.setAttribute('aria-selected', String(on));
+      b.tabIndex = on ? 0 : -1;
+      if (on) stage.setAttribute('aria-labelledby', b.id);
+    });
+    try { localStorage.setItem('bracco-device', device); } catch (e) {}
+    layout();
+  }
+
+  document.querySelectorAll('.seg button').forEach(function (b) {
+    b.addEventListener('click', function () { select(b.getAttribute('data-device')); });
+    b.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        var next = current === 'desktop' ? 'mobile' : 'desktop';
+        select(next);
+        document.getElementById('tab-' + next).focus();
+      }
+    });
+  });
+
+  var start = location.hash.slice(1);
+  if (!devices[start]) { try { start = localStorage.getItem('bracco-device'); } catch (e) { start = null; } }
+  if (!devices[start]) start = window.innerWidth < 734 ? 'mobile' : 'desktop';
+  select(start);
+  new ResizeObserver(layout).observe(stage);
+})();
+</script>
